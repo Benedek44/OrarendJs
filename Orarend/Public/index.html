@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Órarend</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Órarend</h1>
+    <div id="timetable">
+    </div>
+
+    <h2>Új óra hozzáadása</h2>
+    <form id="add-form">
+      <select name="day" required>
+        <option value="">Nap kiválasztása</option>
+        <option>Hétfő</option>
+        <option>Kedd</option>
+        <option>Szerda</option>
+        <option>Csütörtök</option>
+        <option>Péntek</option>
+      </select>
+      <input type="number" name="classNumber" placeholder="Óraszám" required>
+      <input type="text" name="className" placeholder="Tantárgy" required>
+      <button type="submit">Hozzáadás</button>
+    </form>
+
+    <div id="edit-container" class="hidden">
+      <h2>Óra szerkesztése</h2>
+      <form id="edit-form">
+        <input type="hidden" name="id">
+        <select name="day" required>
+          <option>Hétfő</option>
+          <option>Kedd</option>
+          <option>Szerda</option>
+          <option>Csütörtök</option>
+          <option>Péntek</option>
+        </select>
+        <input type="number" name="classNumber" required>
+        <input type="text" name="className" required>
+        <button type="submit">Mentés</button>
+        <button type="button" id="cancel-edit">Mégse</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

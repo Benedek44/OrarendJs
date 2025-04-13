@@ -1,0 +1,144 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom right, #f4f4f4, #eaeaea);
+  padding: 20px;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+  font-family: 'Georgia', serif;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: #0078D4;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
+
+td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+vertical-align: middle;
+}
+
+td:hover {
+  background-color: #e7f0fa;
+  transition: 0.3s;
+}
+
+td button {
+  margin: 0; 
+  display: block; 
+width: 80%; 
+}
+
+button {
+  padding: 10px 16px;
+  margin: 5px 2px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+button.edit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+  transition: 0.3s ease-in-out;
+}
+
+button.edit:hover {
+  background-color: #3d8b3d;
+}
+
+button.delete:hover {
+  background-color: #d32f2f;
+}
+
+form input, form select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: calc(100% - 22px);
+}
+
+form input:focus, form select:focus {
+  outline: none;
+  border-color: #0078D4;
+  box-shadow: 0px 0px 5px #0078D4;
+}
+
+#edit-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+  display: none;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+  transition: 0.3s;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.class-info {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  gap: 5px;
+}
+
+.class-name {
+  font-weight: bold;
+  margin-bottom: 5px; 
+  text-align: center; 
+}
+
