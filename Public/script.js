@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const cancelEditButton = document.getElementById('cancel-edit');
   const daysOfWeek = ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'];
   let timetableData = [];
+  const API_BASE_URL = 'http://localhost:3000';
 
   async function fetchTimetable() {
     try {
-      const response = await fetch('/classes');
+      const response = await fetch(`${API_BASE_URL}/classes`);
       if (response.ok) {
         timetableData = await response.json();
         renderTable();
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const newClass = Object.fromEntries(new FormData(addForm));
-    await sendRequest('/class', 'POST', newClass);
+    await sendRequest(`${API_BASE_URL}/class`, 'POST', newClass);
     addForm.reset();
     await fetchTimetable();
   });
@@ -90,14 +91,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   editForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const updatedClass = Object.fromEntries(new FormData(editForm));
-    await sendRequest(`/class/${updatedClass.id}`, 'PUT', updatedClass);
+    await sendRequest(`${API_BASE_URL}/class/${updatedClass.id}`, 'PUT', updatedClass);
     editForm.reset();
     editContainer.classList.add('hidden');
     await fetchTimetable();
   });
 
   async function deleteClass(id) {
-    await sendRequest(`/timetable/${id}`, 'DELETE');
+    await sendRequest(`${API_BASE_URL}/timetable/${id}`, 'DELETE');
     await fetchTimetable();
   }
 

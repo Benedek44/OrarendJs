@@ -1,10 +1,13 @@
 import express, { json } from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import cors from 'cors';
 import { dbAll, initializeDatabase, dbGet, dbRun } from './Util/database.js';
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -57,7 +60,6 @@ app.put('/class/:id', async (req, res) => {
 
     await dbRun('UPDATE timetable SET day = ?, classNumber = ?, className = ? WHERE id = ?', [day, classNumber, className, id]);
     const updatedClass = { id: +id, day, classNumber, className };
-    console.log('Updated class data:', updatedClass);
     res.status(200).json(updatedClass);
 
     const response = await fetch(`/class/${id}`, {
@@ -67,7 +69,6 @@ app.put('/class/:id', async (req, res) => {
     });
 
     const responseData = await response.json();
-    console.log('Server response:', responseData);
 });
 
 app.delete('/timetable/:id', async (req, res) => {
