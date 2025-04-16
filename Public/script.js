@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   async function deleteClass(id) {
-    await sendRequest(`${API_BASE_URL}/timetable/${id}`, 'DELETE');
+    await sendRequest(`${API_BASE_URL}/classes/${id}`, 'DELETE');
     await fetchTimetable();
   }
 

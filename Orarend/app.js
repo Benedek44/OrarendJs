@@ -1,17 +1,10 @@
-import express, { json } from 'express';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import express from 'express';
 import cors from 'cors';
 import { dbAll, initializeDatabase, dbGet, dbRun } from './Util/database.js';
 
 const app = express();
 app.use(express.json());
-
 app.use(cors());
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, 'Public')));
 
 app.use((err, req, res, next) => {
     if(err)
@@ -61,17 +54,9 @@ app.put('/class/:id', async (req, res) => {
     await dbRun('UPDATE timetable SET day = ?, classNumber = ?, className = ? WHERE id = ?', [day, classNumber, className, id]);
     const updatedClass = { id: +id, day, classNumber, className };
     res.status(200).json(updatedClass);
-
-    const response = await fetch(`/class/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedClass),
-    });
-
-    const responseData = await response.json();
 });
 
-app.delete('/timetable/:id', async (req, res) => {
+app.delete('/classes/:id', async (req, res) => {
     const id = req.params.id;
     const user = await dbGet('SELECT * FROM timetable WHERE id = ?', [id]);
     if(!user)
